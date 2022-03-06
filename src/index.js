@@ -42,6 +42,7 @@ import interactionFindOrCreate from "./interactions/findOrCreate";
 import interactionDocumentation from "./interactions/documentation";
 import interactionWildWildWest from "./interactions/wildWildWest";
 import interactionOlympics from "./interactions/olympics";
+import interactionGamelab from "./interactions/gamelab";
 
 import interactionBreakout from "./interactions/breakout";
 import interactionBreakoutUpdate from "./interactions/trigger/updateBreakouts";
@@ -54,6 +55,7 @@ import interactionClubInit from "./interactions/clubInit";
 import interactionReportForm from "./interactions/reportForm";
 import interactionReportFormSubmit from "./interactions/reportFormSubmit";
 import interactionEmail from "./interactions/email";
+import interactionHaiku from "./interactions/haiku";
 
 export const bugsnagClient = bugsnag(process.env.BUGSNAG_API_KEY);
 
@@ -179,6 +181,11 @@ controller.hears(
 
 // catch-all for direct messages
 controller.hears(".*", "direct_message,indirect_mention,direct_mention", interactionCatchall);
+
+// catch-all for any message in slack
+controller.hears(".*", "ambient", interactionHaiku);
+
+// controller.hears(".*", "mention,direct_message,indirect_mention,direct_mention", interactionGamelab)
 
 controller.on("view_submission", async (bot, message) => {
   bot.replyAcknowledge();

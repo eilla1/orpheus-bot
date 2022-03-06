@@ -36,6 +36,13 @@ startup:
     - Now in ${this.t('startup.juiceFlavor')} flavor!
     - And I'm about to make it everybody's problem
     - I live, I crash, I live again.
+    - Didja miss me <@${this.t('otherBots')}>?
+    - And I am *not* going back to jail.
+    - that was a hecking good nap
+    - s t  r   e    t   c  h !
+    - In my defense, I was left unattended.
+    - All Rights Reversed.
+    - IAMNOWHERE
   juiceFlavor:
     - verry-berry blast
     - dino nugget
@@ -51,6 +58,13 @@ startup:
     - cinnamon
     - wahoo fish
     - eeby deeby
+otherBots:
+  - U015D6A36AG # @scrappy
+  - URZHZS3L6 # @maildog
+  - U012H797734 # @clippy
+  - U012FPRJEVB # @clippy's boss
+  - ULG7GRP0A # @bouncer
+  - USYUBKF1A # @The Fuzz
 mailMission: <@${this.postmaster}> ${this.command} ${this.scenario} ${this.recipient} ${this.note}
 hello:
   - hellp
@@ -542,13 +556,40 @@ fileShare:
   success: |
     Yeah! Here's yo' links <@${this.user}>
     ${this.links.join('\n')}
-  error:
+  errorTooBigImages:
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/2too_big_4.png
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/3too_big_2.png
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/4too_big_1.png
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/6too_big_5.png
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/7too_big_3.png
+  errorTooBig:
+    blocks:
+    - type: image
+      title:
+        type: plain_text
+        text: File too big!
+        emoji: true
+      image_url: ${this.t('fileShare.errorTooBigImages')}
+      alt_text: file too large
+  errorGenericImages:
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/0generic_3.png
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/1generic_2.png
+    - https://cloud-3tq9t10za-hack-club-bot.vercel.app/5generic_1.png
+  errorGeneric:
     - |
       _orpheus sneezes and drops the files on the ground before blowing her nose on a blank jpeg._
     - |
       _orpheus trips and your files slip out of her hands and into an inconveniently placed sewer grate._
     - |
       _orpheus accidentally slips the files into a folder in her briefcase labeled "homework". she starts sweating profusely._
+    - blocks:
+      - type: image
+        title:
+          type: plain_text
+          text: Error!
+          emoji: true
+        image_url: ${this.t('fileShare.errorGenericImages')}
+        alt_text: Something went wrong
   extensions:
     gif:
       - _gif_ that file to me and i'll upload it
@@ -689,3 +730,15 @@ wildWildWest:
 olympics:
   ticket: |
     Welcome to the games <@${this.user}>! We're so excited to have you join us, check your email for more details!
+gamelab:
+  autoReply: |
+    _I've set an auto-reply using <@U017VA2PN3V> until on Fri, Feb 25th_
+    <https://hackclub.slack.com/archives/C0P5NE354/p1644606215597029|HELP!!!1!>
+  melabEmoji: gamelab
+  warningEmoji: warning
+haiku: |
+  > ${this.haikuLines[0]}
+  > ${this.haikuLines[1]}
+  > ${this.haikuLines[2]}
+  _– a haiku by <@${this.user}>_
+statusCheck: pong!
